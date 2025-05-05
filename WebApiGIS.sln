@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiGIS", "WebApiGIS\WebApiGIS.csproj", "{BCB0C978-6004-4D57-A9EA-2C04FDDCE10F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCB0C978-6004-4D57-A9EA-2C04FDDCE10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB0C978-6004-4D57-A9EA-2C04FDDCE10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB0C978-6004-4D57-A9EA-2C04FDDCE10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB0C978-6004-4D57-A9EA-2C04FDDCE10F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2CCF238-91B8-46C5-A6AE-6DD4DA58C9A8}
+	EndGlobalSection
+EndGlobal
