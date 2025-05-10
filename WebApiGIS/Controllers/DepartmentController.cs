@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApiGIS.DTO;
 using WebApiGIS.Models;
 
 namespace WebApiGIS.Controllers
@@ -20,7 +22,13 @@ namespace WebApiGIS.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<Department> depts = context.Department.ToList();
+            List<DeptEmpCountDTO> depts = context.Department
+                .Include(d=>d.Emps)
+                .Select(d=>new DeptEmpCountDTO() {
+                    Id= d.Id,
+                    DeptName = d.Name,
+                    EmpCount=d.Emps.Count()
+                }).ToList();
             return Ok(depts);
         }
         

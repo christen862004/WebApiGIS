@@ -5,6 +5,7 @@ namespace WebApiGIS.Models
     public class ITIContext :DbContext
     {
         public DbSet<Department> Department { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
