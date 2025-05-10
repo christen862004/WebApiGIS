@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Internal Web Page Consumer</h1>
+    <input type="number" id="empID"/>
+    <input type="button" value="Emp Details" onclick="getData()"/>
+    <div id="div1"></div>
+    <!--html build requst using javascript Ajax [js - jquery]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function getData() {
+            //build requets
+            let id = $("#empID").val();
+            $.ajax({
+                url: "/api/Employee/" + id,
+                success: function (result) {
+                    console.log(result);
+                    $("#div1").html(`<h2>${result.empName}</h2><h3>${result.deptName}</h3>`);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

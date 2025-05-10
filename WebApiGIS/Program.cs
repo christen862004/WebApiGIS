@@ -9,8 +9,15 @@ namespace WebApiGIS
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .ConfigureApiBehaviorOptions(option =>
+                option.SuppressModelStateInvalidFilter = true);
            
+            builder.Services.AddCors(option => {
+                option.AddPolicy("myPolicy",
+                    policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -23,9 +30,11 @@ namespace WebApiGIS
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-           
-            app.UseAuthorization();
+            app.UseStaticFiles();//mapp any reuqest to wwwroot
 
+            app.UseCors("myPolicy");//allow ,reject setting
+
+            app.UseAuthorization();
 
             app.MapControllers();//no default route make your own custom route per resourse
 

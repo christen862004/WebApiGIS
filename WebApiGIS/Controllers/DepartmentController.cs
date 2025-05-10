@@ -7,7 +7,7 @@ using WebApiGIS.Models;
 namespace WebApiGIS.Controllers
 {
     [Route("api/[controller]")]//api/Department
-    [ApiController]//att controller (Validation - Binding)
+    [ApiController]//att controller (Validation during binding - Binding)
     //Binding action parameter (primitive bind route value | Querystring)
     //                         (Complex object Bind REquest body)
     public class DepartmentController : ControllerBase
@@ -34,12 +34,13 @@ namespace WebApiGIS.Controllers
         
         //api/Department/1 Get
         [HttpGet("{id:int}")]
-        public IActionResult Details(int id)
+        public ActionResult<GeneralResponse> Details(int id)
         {
             Department? dept=context.Department.FirstOrDefault(d=>d.Id==id);
-            if(dept!=null)
-                return Ok(dept);
-            return BadRequest("Invalid ID");
+            if (dept != null)
+                return new GeneralResponse() {IsPass=true,Data=dept };
+               // return Ok(dept);
+            return new GeneralResponse() { IsPass = false, Data = "Invalid Id" };
         }
 
         [HttpGet("{name:alpha}")]//api/department/sd get
